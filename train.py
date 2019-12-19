@@ -9,12 +9,23 @@ from collections import deque
 import matplotlib.pyplot as plt
 from pathlib import Path
 
+from dqn_agent import Agent
+
+
 # data_folder = Path("/content/gdrive/My Drive/CIS680_2019/Project")
 
 env = gym.make('CarRacing-v0')
 env.seed(0)
 print('State shape: ', env.observation_space.shape)
 print('Number of actions: ', env.action_space)
+
+
+from pyvirtualdisplay import Display
+display = Display(visible=0, size=(1400, 900))
+display.start()
+
+env.reset()
+frame = env.render(mode='rgb_array')
 
 agent = Agent(action_size=5, seed=0)
 
