@@ -16,10 +16,10 @@ class QNetwork(nn.Module):
         self.bn3 = nn.BatchNorm2d(64)
         self.conv4 = nn.Conv2d(64, 64, kernel_size=4, stride=2, padding = 1)
         self.bn4 = nn.BatchNorm2d(64)
-        self.fc1 = nn.Linear(64*5*5, action_size)
-        #self.fc1_bn = nn.BatchNorm1d(64)
-        #self.fc2 = nn.Linear(64,action_size)
-        #self.softmax = nn.LogSoftmax(dim=1)
+        self.fc1 = nn.Linear(64*5*5, 64)
+        self.fc1_bn = nn.BatchNorm1d(64)
+        self.fc2 = nn.Linear(64,action_size)
+        self.softmax = nn.LogSoftmax(dim=1)
 
     def forward(self, x):
         x = F.relu(self.bn1(self.conv1(x)))
