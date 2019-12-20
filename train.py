@@ -27,7 +27,7 @@ display.start()
 env.reset()
 frame = env.render(mode='rgb_array')
 
-agent = Agent(action_size=5, seed=0)
+agent = Agent(action_size=4, seed=0)
 
 def dqn(n_episodes=2000, max_t=1000, eps_start=1.0, eps_end=0.01, eps_decay=0.990):
     """Deep Q-Learning.
