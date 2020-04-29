@@ -11,6 +11,8 @@ from pathlib import Path
 
 from dqn_agent import Agent
 
+device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+
 env = gym.make('CarRacing-v0')
 env = gym.wrappers.Monitor(env, directory='recording', force=True)
 
@@ -27,7 +29,7 @@ print('Number of actions: ', env.action_space)
 
 agent = Agent(action_size=4, seed=0)
 
-agent.qnetwork_local.load_state_dict(torch.load('checkpoint.pth'))
+agent.qnetwork_local.load_state_dict(torch.load('checkpoint.pth', map_location=device))
 
 max_steps = 1000
 
